@@ -18,11 +18,11 @@ Clustering is similar to classification, but the basis is different. In Clusteri
  suddenly pop up like structures, clusters and groupings you would have never thought of otherwise.
 In this part, you will understand and learn how to implement the following Machine Learning Clustering models:
 
-1.	K-Means Clustering
+## 1.	K-Means Clustering
 
 Enjoy Machine Learning!
 
-K-Means Clustering Intuition
+# K-Means Clustering Intuition
 
    In this section will talk about K-Means Clustering Algorithm. It allows you to cluster data, it’s very convenient tool for discovering
 categories groups of data set and in this section will learn how to understand K-Means in intuitive levels. Let’s dive into it:
@@ -38,28 +38,28 @@ work with multi-dimensions.
 # STEPS:
 
 
-## *	Choose the numbers K of clusters
+ *	Choose the numbers K of clusters
 
-## *	Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they can be random points in scatter plot)
+ *	Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they can be random points in scatter plot)
 
-## *	Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance. Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
+ *	Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance. Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
  
-## *	Compute and place the new centroid of each cluster ( in the center of mass, of gravity )
+ *	Compute and place the new centroid of each cluster ( in the center of mass, of gravity )
 
-## *	Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
+ *	Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
 
 
-Random Initialization Trap
+# Random Initialization Trap
 	
    What if we select the centroid in different location, are we able to change the results ?! We don’t want the selection of centroids to effect how the clustering is going  to happen. So, what would happen if we had a bad random initialization ?! There is a additional or a modification to K-means algorithm that allows you to correctly select the centroids and the solution is K-Means++ algorithm. 
 	At the same time I want to mention that we’ll not actually going into k-means++ algorithm, it is quietly involves approach in how the selection occurs, but the good news is that all this happens in background ( you don’t need to actually implement ) so, its good idea to be aware this issue. Keep in mind! 
 
-Choosing the right number of clusters
+# Choosing the right number of clusters
 	
    We talked about the random initialization trap (K-Means++), we worked with predetermined number of clusters. Let’s talk about the algorithm behind finding out the right number of clusters, so we’ll learn how to decide what number of clusters to input into K-Means algorithm.
    So, let’s get straight into it! We got a challenge, a data science problem, again, we got only 2 variables ( X and Y coordinates, just for simplicity, in reality can be any number of columns, variables ). If we run K-Means clustering algorithm, we got the tree clusters, we need a certain metric, a way to evaluate how a certain a number of clusters performs compared to a different number of clusters and preferably that the metrics shouldn’t be a quantifiable  . So, what kind of metrics can we use upon our clustering algorithm that will tell us something about final result ?! The answer is:
 	 
-   Within clusters sum of squares ( wcss )
+##   Within clusters sum of squares ( WCSS )
  
 
    What we are summing?! The distance between each point inside each cluster and the centroid of cluster and then we squaring the distances and we take the sum of all the squares of all these distances for each cluster. And we get the total sum and that is going to be our metric.
@@ -69,38 +69,26 @@ Choosing the right number of clusters
 	But how do we find the optimal goodness of fit?! Is there a sacrifice that comes with improvement ?!
 	
 	
-THE ELBOW METHOD 
+# THE ELBOW METHOD 
 	
 	
    Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward, WCSS going not so substantial.
    The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
 
+Code for Python
 		
 # K-Means Clustering
 
-# Importing the libraries
+**# Importing the libraries** 
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Importing the dataset
+**# Importing the dataset**
 dataset = pd.read_csv('Mall_Customers.csv')
 X = dataset.iloc[:, [3, 4]].values
-# y = dataset.iloc[:, 3].values
 
-# Splitting the dataset into the Training set and Test set
-"""from sklearn.cross_validation import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)"""
-
-# Feature Scaling
-"""from sklearn.preprocessing import StandardScaler
-sc_X = StandardScaler()
-X_train = sc_X.fit_transform(X_train)
-X_test = sc_X.transform(X_test)
-sc_y = StandardScaler()
-y_train = sc_y.fit_transform(y_train)"""
-
-# Using the elbow method to find the optimal number of clusters
+**# Using the elbow method to find the optimal number of clusters**
 from sklearn.cluster import KMeans
 wcss = []
 for i in range(1, 11):
@@ -113,11 +101,11 @@ plt.xlabel('Number of clusters')
 plt.ylabel('WCSS')
 plt.show()
 
-# Fitting K-Means to the dataset
+**# Fitting K-Means to the dataset**
 kmeans = KMeans(n_clusters = 5, init = 'k-means++', random_state = 42)
 y_kmeans = kmeans.fit_predict(X)
 
-# Visualising the clusters
+**# Visualising the clusters**
 plt.scatter(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], s = 50, c = 'red', label = 'Cluster 1')
 plt.scatter(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], s = 50, c = 'blue', label = 'Cluster 2')
 plt.scatter(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], s = 50, c = 'green', label = 'Cluster 3')
