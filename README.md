@@ -22,7 +22,7 @@ In this part, you will understand and learn how to implement the following Machi
 
 Enjoy Machine Learning!
 
-# K-Means Clustering Intuition
+## K-Means Clustering Intuition
 
    In this section will talk about K-Means Clustering Algorithm. It allows you to cluster data, it’s very convenient tool for discovering
 categories groups of data set and in this section will learn how to understand K-Means in intuitive levels. Let’s dive into it:
@@ -35,7 +35,7 @@ clusters actually called clusters of data points in your dataset. In this exampl
 work with multi-dimensions.
 
 
-# STEPS:
+## STEPS:
 
 
  *	Choose the numbers K of clusters
@@ -49,12 +49,11 @@ work with multi-dimensions.
  *	Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
 
 
-# Random Initialization Trap
+## Random Initialization Trap
 	
-   What if we select the centroid in different location, are we able to change the results ?! We don’t want the selection of centroids to effect how the clustering is going  to happen. So, what would happen if we had a bad random initialization ?! There is a additional or a modification to K-means algorithm that allows you to correctly select the centroids and the solution is K-Means++ algorithm. 
-	At the same time I want to mention that we’ll not actually going into k-means++ algorithm, it is quietly involves approach in how the selection occurs, but the good news is that all this happens in background ( you don’t need to actually implement ) so, its good idea to be aware this issue. Keep in mind! 
+   What if we select the centroid in different location, are we able to change the results ?! We don’t want the selection of centroids to effect how the clustering is going  to happen. So, what would happen if we had a bad random initialization ?! There is a additional or a modification to K-means algorithm that allows you to correctly select the centroids and the solution is K-Means++ algorithm.  At the same time I want to mention that we’ll not actually going into k-means++ algorithm, it is quietly involves approach in how the selection occurs, but the good news is that all this happens in background ( you don’t need to actually implement ) so, its good idea to be aware this issue. Keep in mind! 
 
-# Choosing the right number of clusters
+## Choosing the right number of clusters
 	
    We talked about the random initialization trap (K-Means++), we worked with predetermined number of clusters. Let’s talk about the algorithm behind finding out the right number of clusters, so we’ll learn how to decide what number of clusters to input into K-Means algorithm.
    So, let’s get straight into it! We got a challenge, a data science problem, again, we got only 2 variables ( X and Y coordinates, just for simplicity, in reality can be any number of columns, variables ). If we run K-Means clustering algorithm, we got the tree clusters, we need a certain metric, a way to evaluate how a certain a number of clusters performs compared to a different number of clusters and preferably that the metrics shouldn’t be a quantifiable  . So, what kind of metrics can we use upon our clustering algorithm that will tell us something about final result ?! The answer is:
@@ -69,53 +68,52 @@ work with multi-dimensions.
 	But how do we find the optimal goodness of fit?! Is there a sacrifice that comes with improvement ?!
 	
 	
-# THE ELBOW METHOD 
+## THE ELBOW METHOD 
 	
 	
-   Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward, WCSS going not so substantial.
-   The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
+   Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward, WCSS going not so substantial.  The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
 
-Code for Python
+**##Code for Python**
 		
-# K-Means Clustering
+## K-Means Clustering
 
-**# Importing the libraries** 
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
+**# Importing the libraries**  
+import numpy as np  
+import matplotlib.pyplot as plt  
+import pandas as pd  
 
 **# Importing the dataset**
 dataset = pd.read_csv('Mall_Customers.csv')
 X = dataset.iloc[:, [3, 4]].values
 
 **# Using the elbow method to find the optimal number of clusters**
-from sklearn.cluster import KMeans
-wcss = []
-for i in range(1, 11):
-    kmeans = KMeans(n_clusters = i, init = 'k-means++', random_state = 42)
-    kmeans.fit(X)
-    wcss.append(kmeans.inertia_)
-plt.plot(range(1, 11), wcss)
-plt.title('The Elbow Method')
-plt.xlabel('Number of clusters')
-plt.ylabel('WCSS')
-plt.show()
+from sklearn.cluster import KMeans  
+wcss = []  
+for i in range(1, 11):  
+    kmeans = KMeans(n_clusters = i, init = 'k-means++', random_state = 42)  
+    kmeans.fit(X)  
+    wcss.append(kmeans.inertia_)  
+plt.plot(range(1, 11), wcss)  
+plt.title('The Elbow Method')  
+plt.xlabel('Number of clusters')  
+plt.ylabel('WCSS')  
+plt.show()  
 
 **# Fitting K-Means to the dataset**
 kmeans = KMeans(n_clusters = 5, init = 'k-means++', random_state = 42)
 y_kmeans = kmeans.fit_predict(X)
 
 **# Visualising the clusters**
-plt.scatter(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], s = 50, c = 'red', label = 'Cluster 1')
-plt.scatter(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], s = 50, c = 'blue', label = 'Cluster 2')
-plt.scatter(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], s = 50, c = 'green', label = 'Cluster 3')
-plt.scatter(X[y_kmeans == 3, 0], X[y_kmeans == 3, 1], s = 50, c = 'cyan', label = 'Cluster 4')
-plt.scatter(X[y_kmeans == 4, 0], X[y_kmeans == 4, 1], s = 50, c = 'magenta', label = 'Cluster 5')
-plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s = 300, c = 'yellow', label = 'Centroids')
-plt.title('Clusters of customers')
-plt.xlabel('Annual Income (k$)')
-plt.ylabel('Spending Score (1-100)')
-plt.legend()
-plt.show()
+plt.scatter(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], s = 50, c = 'red', label = 'Cluster 1')  
+plt.scatter(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], s = 50, c = 'blue', label = 'Cluster 2')  
+plt.scatter(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], s = 50, c = 'green', label = 'Cluster 3')  
+plt.scatter(X[y_kmeans == 3, 0], X[y_kmeans == 3, 1], s = 50, c = 'cyan', label = 'Cluster 4')  
+plt.scatter(X[y_kmeans == 4, 0], X[y_kmeans == 4, 1], s = 50, c = 'magenta', label = 'Cluster 5')  
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s = 300, c = 'yellow', label = 'Centroids')  
+plt.title('Clusters of customers')  
+plt.xlabel('Annual Income (k$)')  
+plt.ylabel('Spending Score (1-100)')  
+plt.legend()  
+plt.show()  
 
 
