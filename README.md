@@ -20,6 +20,9 @@ In this part, you will understand and learn how to implement the following Machi
 
 K-Means Clustering
 
+![whatkmeandoesforyou](https://user-images.githubusercontent.com/25092397/34727495-c079d8ea-f55f-11e7-8768-f4d60873da8e.png)
+
+
 *Enjoy Machine Learning!*
 
 ## K-Means Clustering Intuition
@@ -59,6 +62,8 @@ work with multi-dimensions.
    So, let’s get straight into it! We got a challenge, a data science problem, again, we got only 2 variables ( X and Y coordinates, just for simplicity, in reality can be any number of columns, variables ). If we run K-Means clustering algorithm, we got the tree clusters, we need a certain metric, a way to evaluate how a certain a number of clusters performs compared to a different number of clusters and preferably that the metrics shouldn’t be a quantifiable  . So, what kind of metrics can we use upon our clustering algorithm that will tell us something about final result ?! The answer is:
 	 
 ##   Within clusters sum of squares ( WCSS )
+
+![choosing the right number of clusters](https://user-images.githubusercontent.com/25092397/34727662-4b563ada-f560-11e7-8241-a0e3b4692446.png)
  
 
    What we are summing?! The distance between each point inside each cluster and the centroid of cluster and then we squaring the distances and we take the sum of all the squares of all these distances for each cluster. And we get the total sum and that is going to be our metric.
@@ -73,20 +78,28 @@ work with multi-dimensions.
 	
    Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward, WCSS going not so substantial.  The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
 
-*#Code for Python**
+![theelbowmethod](https://user-images.githubusercontent.com/25092397/34727311-3b23c49e-f55f-11e7-8ec0-37f9981df2c8.png)
+
+### Visualising the clusters and interpretation
+
+![cluster of customers](https://user-images.githubusercontent.com/25092397/34728056-751b7fa0-f561-11e7-8361-a66a41df09bc.png)
+
+
+
+**Code for Python**
 		
 ```K-Means Clustering
 
-# Importing the libraries**    
+# Importing the libraries    
 import numpy as np  
 import matplotlib.pyplot as plt  
 import pandas as pd  
 
-# Importing the dataset**    
+# Importing the dataset    
 dataset = pd.read_csv('Mall_Customers.csv')
 X = dataset.iloc[:, [3, 4]].values
 
-# Using the elbow method to find the optimal number of clusters**  
+# Using the elbow method to find the optimal number of clusters  
 from sklearn.cluster import KMeans  
 wcss = []  
 for i in range(1, 11):  
@@ -99,11 +112,11 @@ plt.xlabel('Number of clusters')
 plt.ylabel('WCSS')  
 plt.show()  
 
-# Fitting K-Means to the dataset**  
+# Fitting K-Means to the dataset  
 kmeans = KMeans(n_clusters = 5, init = 'k-means++', random_state = 42)
 y_kmeans = kmeans.fit_predict(X)
 
-# Visualising the clusters**  
+# Visualising the clusters  
 plt.scatter(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], s = 50, c = 'red', label = 'Cluster 1')  
 plt.scatter(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], s = 50, c = 'blue', label = 'Cluster 2')  
 plt.scatter(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], s = 50, c = 'green', label = 'Cluster 3')  
