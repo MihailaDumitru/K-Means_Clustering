@@ -1,14 +1,16 @@
-Welcome to Clustering!
+# Welcome to Clustering!
+
 
 
 Solve Business problem in Python and R
+---
 	
    There is a big Mall in a specific city that contains information of its clients, the clients that subscribed to the membership card.
 When the clients subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values
 between 1 and 100 so that the closest spending score less the client spend, and close to 100 spending score more the client spend, 
 score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc. ).
 	
-   My job is to segment the clients into groups based to annual income and spending score ( 2 variables for simplicity ).
+   **My job is to segment the clients into groups based to annual income and spending score** ( 2 variables for simplicity ).
 The mall doesn’t know – which are the segments and how many segments, this is typically clustering problem because we don’t know the answers.
 
 Clustering is similar to classification, but the basis is different. In Clustering you don’t know what you are looking for, and you are
@@ -33,18 +35,18 @@ clusters actually called clusters of data points in your dataset. In this exampl
 work with multi-dimensions.
 
 
-STEPS:
+# STEPS:
 
 
-1.	Choose the numbers K of clusters
+## *	Choose the numbers K of clusters
 
-2.	Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they can be random points in scatter plot)
+## *	Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they can be random points in scatter plot)
 
-3.	Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance. Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
+## *	Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance. Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
  
-4.	Compute and place the new centroid of each cluster ( in the center of mass, of gravity )
+## *	Compute and place the new centroid of each cluster ( in the center of mass, of gravity )
 
-5.	Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
+## *	Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
 
 
 Random Initialization Trap
@@ -74,6 +76,58 @@ THE ELBOW METHOD
    The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
 
 		
+# K-Means Clustering
 
+# Importing the libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Importing the dataset
+dataset = pd.read_csv('Mall_Customers.csv')
+X = dataset.iloc[:, [3, 4]].values
+# y = dataset.iloc[:, 3].values
+
+# Splitting the dataset into the Training set and Test set
+"""from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)"""
+
+# Feature Scaling
+"""from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+sc_y = StandardScaler()
+y_train = sc_y.fit_transform(y_train)"""
+
+# Using the elbow method to find the optimal number of clusters
+from sklearn.cluster import KMeans
+wcss = []
+for i in range(1, 11):
+    kmeans = KMeans(n_clusters = i, init = 'k-means++', random_state = 42)
+    kmeans.fit(X)
+    wcss.append(kmeans.inertia_)
+plt.plot(range(1, 11), wcss)
+plt.title('The Elbow Method')
+plt.xlabel('Number of clusters')
+plt.ylabel('WCSS')
+plt.show()
+
+# Fitting K-Means to the dataset
+kmeans = KMeans(n_clusters = 5, init = 'k-means++', random_state = 42)
+y_kmeans = kmeans.fit_predict(X)
+
+# Visualising the clusters
+plt.scatter(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], s = 50, c = 'red', label = 'Cluster 1')
+plt.scatter(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], s = 50, c = 'blue', label = 'Cluster 2')
+plt.scatter(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], s = 50, c = 'green', label = 'Cluster 3')
+plt.scatter(X[y_kmeans == 3, 0], X[y_kmeans == 3, 1], s = 50, c = 'cyan', label = 'Cluster 4')
+plt.scatter(X[y_kmeans == 4, 0], X[y_kmeans == 4, 1], s = 50, c = 'magenta', label = 'Cluster 5')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s = 300, c = 'yellow', label = 'Centroids')
+plt.title('Clusters of customers')
+plt.xlabel('Annual Income (k$)')
+plt.ylabel('Spending Score (1-100)')
+plt.legend()
+plt.show()
 
 
