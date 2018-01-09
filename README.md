@@ -18,9 +18,9 @@ Clustering is similar to classification, but the basis is different. In Clusteri
  suddenly pop up like structures, clusters and groupings you would have never thought of otherwise.
 In this part, you will understand and learn how to implement the following Machine Learning Clustering models:
 
-## 1.	K-Means Clustering
+K-Means Clustering
 
-Enjoy Machine Learning!
+*Enjoy Machine Learning!*
 
 ## K-Means Clustering Intuition
 
