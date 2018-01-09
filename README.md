@@ -86,7 +86,10 @@ work with multi-dimensions.
 
 
 
-**Code for Python**
+---
+
+**Code for Python** 
+---  
 		
 ```K-Means Clustering
 
