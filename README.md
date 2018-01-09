@@ -75,14 +75,14 @@ work with multi-dimensions.
 
 **##Code for Python**
 		
-'''## K-Means Clustering
+```## K-Means Clustering
 
 **# Importing the libraries**    
 import numpy as np  
 import matplotlib.pyplot as plt  
 import pandas as pd  
 
-**# Importing the dataset**  
+**# Importing the dataset**    
 dataset = pd.read_csv('Mall_Customers.csv')
 X = dataset.iloc[:, [3, 4]].values
 
@@ -114,6 +114,6 @@ plt.title('Clusters of customers')
 plt.xlabel('Annual Income (k$)')  
 plt.ylabel('Spending Score (1-100)')  
 plt.legend()  
-plt.show()  '''
+plt.show()  ```
 
 
