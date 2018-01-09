@@ -73,7 +73,7 @@ work with multi-dimensions.
 	
    Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward, WCSS going not so substantial.  The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
 
-**##Code for Python**
+*#Code for Python**
 		
 ```K-Means Clustering
 
@@ -118,7 +118,7 @@ plt.show()
 ```
 ---
 
-**##Code for Python** 
+**Code for R** 
 ---  
 
 ```# K-Means Clustering  
