@@ -15,19 +15,19 @@ When the clients subscribed to the membership card, they provided info like thei
 between 1 and 100 so that the closest spending score less the client spend, and close to 100 spending score more the client spend, 
 score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc. ).
 	
-	My job is to segment the clients into groups based to annual income and spending score ( 2 variables for simplicity ).
+   My job is to segment the clients into groups based to annual income and spending score ( 2 variables for simplicity ).
 The mall doesn’t know – which are the segments and how many segments, this is typically clustering problem because we don’t know the answers.
 
 
 K-Means Clustering Intuition
 
-	In this section will talk about K-Means Clustering Algorithm. It allows you to cluster data, it’s very convenient tool for discovering
+   In this section will talk about K-Means Clustering Algorithm. It allows you to cluster data, it’s very convenient tool for discovering
 categories groups of data set and in this section will learn how to understand K-Means in intuitive levels. Let’s dive into it:
 Let’s decide we have 2 variables in our data set and we decide to plot those variables on X and Y axes. The question is: 
 	Can we identify certain groups among variables and how would we go about doing it ?!
 Yes, let’s see how! Are you excited ?! Because I really am !
 
-	What K-Means does for you !? It takes out the complexity from this decision making process and allows you to very easily identify those 
+   What K-Means does for you !? It takes out the complexity from this decision making process and allows you to very easily identify those 
 clusters actually called clusters of data points in your dataset. In this example we have 2 dimensions ( 2 variables ) but K-Means can
 work with multi-dimensions.
 
@@ -56,22 +56,18 @@ can be random points in scatter plot)
 
 Random Initialization Trap
 	
-		What if we select the centroid in different location, are we able to change the results ?! We don’t want the selection of centroids to
-	effect how the clustering is going  to happen. So, what would happen if we had a bad random initialization ?! There is a additional 
-	or a modification to K-means algorithm that allows you to correctly select the centroids and the solution is K-Means++ algorithm. 
-	At the same time I want to mention that we’ll not actually going into k-means++ algorithm, it is quietly involves approach in how the
-	selection occurs, but the good news is that all this happens in background ( you don’t need to actually implement ) so, its good idea 
-	to be aware this issue. Keep in mind! 
+   What if we select the centroid in different location, are we able to change the results ?! We don’t want the selection of centroids to effect how the clustering is going  to happen. So, what would happen if we had a bad random initialization ?! There is a additional or a modification to K-means algorithm that allows you to correctly select the centroids and the solution is K-Means++ algorithm. 
+	At the same time I want to mention that we’ll not actually going into k-means++ algorithm, it is quietly involves approach in how the selection occurs, but the good news is that all this happens in background ( you don’t need to actually implement ) so, its good idea to be aware this issue. Keep in mind! 
 
 Choosing the right number of clusters
 	
-	We talked about the random initialization trap (K-Means++), we worked with predetermined number of clusters. Let’s talk about the algorithm behind finding out the right number of clusters, so we’ll learn how to decide what number of clusters to input into K-Means algorithm.
-	So, let’s get straight into it! We got a challenge, a data science problem, again, we got only 2 variables ( X and Y coordinates, just for simplicity, in reality can be any number of columns, variables ). If we run K-Means clustering algorithm, we got the tree clusters, we need a certain metric, a way to evaluate how a certain a number of clusters performs compared to a different number of clusters and preferably that the metrics shouldn’t be a quantifiable  . So, what kind of metrics can we use upon our clustering algorithm that will tell us something about final result ?! The answer is:
+   We talked about the random initialization trap (K-Means++), we worked with predetermined number of clusters. Let’s talk about the algorithm behind finding out the right number of clusters, so we’ll learn how to decide what number of clusters to input into K-Means algorithm.
+   So, let’s get straight into it! We got a challenge, a data science problem, again, we got only 2 variables ( X and Y coordinates, just for simplicity, in reality can be any number of columns, variables ). If we run K-Means clustering algorithm, we got the tree clusters, we need a certain metric, a way to evaluate how a certain a number of clusters performs compared to a different number of clusters and preferably that the metrics shouldn’t be a quantifiable  . So, what kind of metrics can we use upon our clustering algorithm that will tell us something about final result ?! The answer is:
 	 
-	Within clusters sum of squares ( wcss )
+   Within clusters sum of squares ( wcss )
  
 
-	What we are summing?! The distance between each point inside each cluster and the centroid of cluster and then we squaring the distances and we take the sum of all the squares of all these distances for each cluster. And we get the total sum and that is going to be our metric.
+   What we are summing?! The distance between each point inside each cluster and the centroid of cluster and then we squaring the distances and we take the sum of all the squares of all these distances for each cluster. And we get the total sum and that is going to be our metric.
 	This is quietly a good metric in terms of understanding or comparing the goodness of fit between 2 different of K-Means clustering. 
  	How do we know that ?! Let’s say (hypothetically) we have just one cluster, the WCSS become really big ( big distances between points and centroid). Adding one more cluster, the total WCSS becoming less than when we had one centroid. Adding another cluster, the distance decrease and so on.
 	What is the limit of that? How far its going decrease ? How many clusters of maximum can we have ?! We can have as many clusters as points of observation. In that case, WCSS will be 0 because every single point has its own centroid and the distance between point and centroid is 0. 
@@ -80,8 +76,8 @@ Choosing the right number of clusters
 THE ELBOW METHOD 
 	
 	
-	Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward, WCSS going not so substantial.
-	The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
+   Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward, WCSS going not so substantial.
+   The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
 
 		
 
