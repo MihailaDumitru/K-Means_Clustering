@@ -1,16 +1,9 @@
-Welcome to Part 4 - Clustering!
+Welcome to Clustering!
 
-Clustering is similar to classification, but the basis is different. In Clustering you don’t know what you are looking for, and you are
- trying to identify some segments or clusters in your data. When you use clustering algorithms on your dataset, unexpected things can 
- suddenly pop up like structures, clusters and groupings you would have never thought of otherwise.
-In this part, you will understand and learn how to implement the following Machine Learning Clustering models:
-1.	K-Means Clustering
 
-Enjoy Machine Learning!
-
-Solve Business problem in Python
+Solve Business problem in Python and R
 	
-There is a big Mall in a specific city that contains information of its clients, the clients that subscribed to the membership card.
+   There is a big Mall in a specific city that contains information of its clients, the clients that subscribed to the membership card.
 When the clients subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values
 between 1 and 100 so that the closest spending score less the client spend, and close to 100 spending score more the client spend, 
 score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc. ).
@@ -18,6 +11,14 @@ score based to some criteria: income, the amount of dollars spent, number of tim
    My job is to segment the clients into groups based to annual income and spending score ( 2 variables for simplicity ).
 The mall doesn’t know – which are the segments and how many segments, this is typically clustering problem because we don’t know the answers.
 
+Clustering is similar to classification, but the basis is different. In Clustering you don’t know what you are looking for, and you are
+ trying to identify some segments or clusters in your data. When you use clustering algorithms on your dataset, unexpected things can 
+ suddenly pop up like structures, clusters and groupings you would have never thought of otherwise.
+In this part, you will understand and learn how to implement the following Machine Learning Clustering models:
+
+1.	K-Means Clustering
+
+Enjoy Machine Learning!
 
 K-Means Clustering Intuition
 
@@ -37,21 +38,13 @@ STEPS:
 
 1.	Choose the numbers K of clusters
 
-2.	Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they 
-can be random points in scatter plot)
+2.	Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they can be random points in scatter plot)
 
-3.	Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance.
- Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we
- learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a 
- perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the 
- perpendicular line is equity distant to the both centroids )
+3.	Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance. Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
  
 4.	Compute and place the new centroid of each cluster ( in the center of mass, of gravity )
 
-5.	Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) ->
- Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point 
- are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm
- that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
+5.	Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
 
 
 Random Initialization Trap
@@ -72,6 +65,7 @@ Choosing the right number of clusters
  	How do we know that ?! Let’s say (hypothetically) we have just one cluster, the WCSS become really big ( big distances between points and centroid). Adding one more cluster, the total WCSS becoming less than when we had one centroid. Adding another cluster, the distance decrease and so on.
 	What is the limit of that? How far its going decrease ? How many clusters of maximum can we have ?! We can have as many clusters as points of observation. In that case, WCSS will be 0 because every single point has its own centroid and the distance between point and centroid is 0. 
 	But how do we find the optimal goodness of fit?! Is there a sacrifice that comes with improvement ?!
+	
 	
 THE ELBOW METHOD 
 	
