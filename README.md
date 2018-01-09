@@ -75,7 +75,7 @@ work with multi-dimensions.
 
 **##Code for Python**
 		
-## K-Means Clustering
+'''## K-Means Clustering
 
 **# Importing the libraries**    
 import numpy as np  
@@ -114,6 +114,6 @@ plt.title('Clusters of customers')
 plt.xlabel('Annual Income (k$)')  
 plt.ylabel('Spending Score (1-100)')  
 plt.legend()  
-plt.show()  
+plt.show()  '''
 
 
