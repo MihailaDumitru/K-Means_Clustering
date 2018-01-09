@@ -38,15 +38,15 @@ work with multi-dimensions.
 ## STEPS:
 
 
- *	Choose the numbers K of clusters
+ 1.	*Choose the numbers K of clusters*
 
- *	Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they can be random points in scatter plot)
+ 2.	*Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they can be random points in scatter plot)*
 
- *	Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance. Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
+ 3.	*Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance.* Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
  
- *	Compute and place the new centroid of each cluster ( in the center of mass, of gravity )
+ 4.	*Compute and place the new centroid of each cluster ( in the center of mass, of gravity )*
 
- *	Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
+ 5.	*Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish) * -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
 
 
 ## Random Initialization Trap
