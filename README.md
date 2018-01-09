@@ -114,11 +114,13 @@ plt.title('Clusters of customers')
 plt.xlabel('Annual Income (k$)')  
 plt.ylabel('Spending Score (1-100)')  
 plt.legend()  
-plt.show()  ```
+plt.show()  
+```
 ---
 
 Code for R  
 ---  
+
 ```# K-Means Clustering  
 
 # Importing the dataset  
