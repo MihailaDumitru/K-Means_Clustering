@@ -5,19 +5,18 @@ Clustering is similar to classification, but the basis is different. In Clusteri
  suddenly pop up like structures, clusters and groupings you would have never thought of otherwise.
 In this part, you will understand and learn how to implement the following Machine Learning Clustering models:
 1.	K-Means Clustering
-2.	Hierarchical Clustering
 
 Enjoy Machine Learning!
 
-	Solve Business problem in Python
+Solve Business problem in Python
 	
-		There is a big Mall in a specific city that contains information of its clients, the clients that subscribed to the membership card.
-	When the clients subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values
-	between 1 and 100 so that the closest spending score less the client spend, and close to 100 spending score more the client spend, 
-	score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc. ).
+There is a big Mall in a specific city that contains information of its clients, the clients that subscribed to the membership card.
+When the clients subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values
+between 1 and 100 so that the closest spending score less the client spend, and close to 100 spending score more the client spend, 
+score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc. ).
 	
-		My job is to segment the clients into groups based to annual income and spending score ( 2 variables for simplicity ).
-	The mall doesn’t know – which are the segments and how many segments, this is typically clustering problem because we don’t know the answers.
+	My job is to segment the clients into groups based to annual income and spending score ( 2 variables for simplicity ).
+The mall doesn’t know – which are the segments and how many segments, this is typically clustering problem because we don’t know the answers.
 
 
 K-Means Clustering Intuition
@@ -66,35 +65,23 @@ Random Initialization Trap
 
 Choosing the right number of clusters
 	
-		We talked about the random initialization trap (K-Means++), we worked with predetermined number of clusters. Let’s talk about the
-	algorithm behind finding out the right number of clusters, so we’ll learn how to decide what number of clusters to input into K-Means algorithm.
-	So, let’s get straight into it! We got a challenge, a data science problem, again, we got only 2 variables ( X and Y coordinates,
-	just for simplicity, in reality can be any number of columns, variables ). If we run K-Means clustering algorithm, we got the tree
-	clusters, we need a certain metric, a way to evaluate how a certain a number of clusters performs compared to a different number of
-	clusters and preferably that the metrics shouldn’t be a quantifiable  . So, what kind of metrics can we use upon our clustering
-	algorithm that will tell us something about final result ?! The answer is:
-	
-	within clusters sum of squares ( wcss )
+	We talked about the random initialization trap (K-Means++), we worked with predetermined number of clusters. Let’s talk about the algorithm behind finding out the right number of clusters, so we’ll learn how to decide what number of clusters to input into K-Means algorithm.
+	So, let’s get straight into it! We got a challenge, a data science problem, again, we got only 2 variables ( X and Y coordinates, just for simplicity, in reality can be any number of columns, variables ). If we run K-Means clustering algorithm, we got the tree clusters, we need a certain metric, a way to evaluate how a certain a number of clusters performs compared to a different number of clusters and preferably that the metrics shouldn’t be a quantifiable  . So, what kind of metrics can we use upon our clustering algorithm that will tell us something about final result ?! The answer is:
+	 
+	Within clusters sum of squares ( wcss )
  
 
-	What we are summing?! The distance between each point inside each cluster and the centroid of cluster and then we squaring the distances
- and we take the sum of all the squares of all these distances for each cluster. And we get the total sum and that is going to be our metric.
- This is quietly a good metric in terms of understanding or comparing the goodness of fit between 2 different of K-Means clustering. 
- How do we know that ?! Let’s say (hypothetically) we have just one cluster, the WCSS become really big ( big distances between points and centroid)
- . Adding one more cluster, the total WCSS becoming less than when we had one centroid. Adding another cluster, the distance decrease and so on.
-	What is the limit of that? How far its going decrease ? How many clusters of maximum can we have ?! We can have as many clusters as points of
- observation. In that case, WCSS will be 0 because every single point has its own centroid and the distance between point and centroid is 0. 
+	What we are summing?! The distance between each point inside each cluster and the centroid of cluster and then we squaring the distances and we take the sum of all the squares of all these distances for each cluster. And we get the total sum and that is going to be our metric.
+	This is quietly a good metric in terms of understanding or comparing the goodness of fit between 2 different of K-Means clustering. 
+ 	How do we know that ?! Let’s say (hypothetically) we have just one cluster, the WCSS become really big ( big distances between points and centroid). Adding one more cluster, the total WCSS becoming less than when we had one centroid. Adding another cluster, the distance decrease and so on.
+	What is the limit of that? How far its going decrease ? How many clusters of maximum can we have ?! We can have as many clusters as points of observation. In that case, WCSS will be 0 because every single point has its own centroid and the distance between point and centroid is 0. 
 	But how do we find the optimal goodness of fit?! Is there a sacrifice that comes with improvement ?!
 	
-	THE ELBOW METHOD 
+THE ELBOW METHOD 
 	
 	
-		Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large 
-	number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward,
-	WCSS going not so substantial.
-		The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there
-	is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem 
-	you’re trying to solve.
+	Its is actually very visual. You can see how WCSS changes in terms of adding more number of clusters. WCSS starts at a quite large number, what matters is how change is ( big gaps, massive change of units ). Firsts improvements created huge jumps, going forward, WCSS going not so substantial.
+	The Elbow method looks for that change ( elbow ) where the drop goes from being quite substantial to being not as substantial and there is the optimal number of clusters. This is quietly arbitrary. You decide how many of clusters its optimal for your certain of problem you’re trying to solve.
 
 		
 
