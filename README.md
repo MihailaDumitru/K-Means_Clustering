@@ -118,7 +118,7 @@ plt.show()
 ```
 ---
 
-Code for R  
+**##Code for Python** 
 ---  
 
 ```# K-Means Clustering  
