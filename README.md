@@ -5,41 +5,30 @@
 Solve Business problem in Python and R
 ---
 	
-   There is a big Mall in a specific city that contains information of its clients that subscribed to the membership card.
-When the customers subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values
-between 1 and 100 so that the closest spending score less the client spend, and close to 100 spending score more the client spend, 
-score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc. ).
+   There is a big Mall in a specific city that contains information of its clients that subscribed to the membership card. When the customers subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values between 1 and 100 so that the close to 1 spending score less the client spent, and close to 100 spending score more the client spent, score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc.).
 	
-   **My job is to segment the clients into groups based to annual income and spending score** ( 2 variables for simplicity ).
-The mall doesn’t know – which are the segments and how many segments, this is typically clustering problem because we don’t know the answers.
+  **My job is to segment the clients into groups based to annual income and spending score** ( 2 variables for simplicity ). The mall doesn’t know – which are the segments and how many segments are, this is typically clustering problem because we don’t know the answers.
 
-Clustering is similar to classification, but the basis is different. In Clustering you don’t know what you are looking for, and you are
- trying to identify some segments or clusters in your data. When you use clustering algorithms on your dataset, unexpected things can 
- suddenly pop up like structures, clusters and groupings you would have never thought of otherwise.
-In this part, you will understand and learn how to implement the following Machine Learning Clustering models:
+  Clustering is similar to classification, but the basis is different. In Clustering you don’t know what you are looking for, and you are trying to identify some segments or clusters in your data. When you use clustering algorithms on your dataset, unexpected things can suddenly pop up like structures, clusters/groupings you would have never thought of otherwise. In the following, you will understand and learn how to implement the following Machine Learning Clustering model:
 
 ***K-Means Clustering***
 
 ![whatkmeandoesforyou](https://user-images.githubusercontent.com/25092397/34727495-c079d8ea-f55f-11e7-8768-f4d60873da8e.png)
 
-
 *Enjoy Machine Learning!*
 
 ## K-Means Clustering Intuition
 
-   In this section will talk about K-Means Clustering Algorithm. It allows you to cluster data, it’s very convenient tool for discovering
-categories groups of data set and in this section will learn how to understand K-Means in intuitive levels. Let’s dive into it:
+   In this section will talk about K-Means Clustering Algorithm. It allows you to cluster data, it’s very convenient tool for discovering categories groups of data set and in this section will learn how to understand K-Means in intuitive levels. Let’s dive into it:  
 Let’s decide we have 2 variables in our data set and we decide to plot those variables on X and Y axes.  
 
 ---
 The question is: 
 ---
 Can we identify certain groups among variables and how would we go about doing it ?!  
-Yes, let’s see how!   Are you excited ?! Because I really am !
+Yes, let’s see how!
 
-   What K-Means does for you !? It takes out the complexity from this decision making process and allows you to very easily identify those 
-clusters actually called clusters of data points in your dataset. In this example we have 2 dimensions ( 2 variables ) but K-Means can
-work with multi-dimensions.
+  What K-Means does for you !? It takes out the complexity from this decision making process and allows you to very easily identify those clusters actually called clusters of data points in your dataset. In this example we have 2 dimensions ( 2 variables ) but K-Means can work with multi-dimensions.
 
 **How does it work?!**
 
