@@ -18,7 +18,7 @@ Clustering is similar to classification, but the basis is different. In Clusteri
  suddenly pop up like structures, clusters and groupings you would have never thought of otherwise.
 In this part, you will understand and learn how to implement the following Machine Learning Clustering models:
 
-K-Means Clustering
+***K-Means Clustering***
 
 ![whatkmeandoesforyou](https://user-images.githubusercontent.com/25092397/34727495-c079d8ea-f55f-11e7-8768-f4d60873da8e.png)
 
@@ -29,14 +29,19 @@ K-Means Clustering
 
    In this section will talk about K-Means Clustering Algorithm. It allows you to cluster data, it’s very convenient tool for discovering
 categories groups of data set and in this section will learn how to understand K-Means in intuitive levels. Let’s dive into it:
-Let’s decide we have 2 variables in our data set and we decide to plot those variables on X and Y axes. The question is: 
-	Can we identify certain groups among variables and how would we go about doing it ?!
-Yes, let’s see how! Are you excited ?! Because I really am !
+Let’s decide we have 2 variables in our data set and we decide to plot those variables on X and Y axes.  
+
+---
+The question is: 
+---
+Can we identify certain groups among variables and how would we go about doing it ?!  
+Yes, let’s see how!   Are you excited ?! Because I really am !
 
    What K-Means does for you !? It takes out the complexity from this decision making process and allows you to very easily identify those 
 clusters actually called clusters of data points in your dataset. In this example we have 2 dimensions ( 2 variables ) but K-Means can
 work with multi-dimensions.
 
+**How does it work?!**
 
 ## STEPS:
 
