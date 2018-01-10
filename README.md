@@ -5,8 +5,8 @@
 Solve Business problem in Python and R
 ---
 	
-   There is a big Mall in a specific city that contains information of its clients, the clients that subscribed to the membership card.
-When the clients subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values
+   There is a big Mall in a specific city that contains information of its clients that subscribed to the membership card.
+When the customers subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values
 between 1 and 100 so that the closest spending score less the client spend, and close to 100 spending score more the client spend, 
 score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc. ).
 	
