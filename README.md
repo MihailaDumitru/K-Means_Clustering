@@ -39,7 +39,7 @@ Yes, let’s see how!
 
  2.	*Select a random K points, the centroids (and  not necessarily from your data set, they can be actual points in your dataset or they can be random points in scatter plot)*
 
- 3.	*Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance.* Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly throw the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
+ 3.	*Assign each data point to the closest centroid -> that forms K clusters (for the purpose of this project we’ll use Euclidian distance.* Basically, for every data point in dataset we’ll identify which centroid is closest. We’re going to use a quick hack , something that we learned from geometry. So, we’re going to connect the centroids with a line and then we’ll find the centrum of the line and  we’ll put a perpendicular line exactly through the central, so from the geometry that we know, it’s a very straight concept that every point of the perpendicular line is equity distant to the both centroids )
  
  4.	*Compute and place the new centroid of each cluster ( in the center of mass, of gravity )*
 
