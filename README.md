@@ -43,12 +43,12 @@ Yes, let’s see how!
  
  4.	*Compute and place the new centroid of each cluster ( in the center of mass, of gravity )*
 
- 5.	*Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish)* -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm that mean the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
+ 5.	*Reassign each data point to the new closest centroid. If any reassignment took place, go to step 4, otherwise go to FIN (Finnish)* -> Your Model is Ready ( so, at the end, you can see this time the equit distant line does not make any points reassign, so, every point are already in the correct cluster and that mean no-reassignment  to place during this step so we can proceed to complete our algorithm,  meaning the algorithm has converged. Now we can remove our centroids and distant line-> Model Ready )
 
 
 ## Random Initialization Trap
 	
-   What if we select the centroid in different location, are we able to change the results ?! We don’t want the selection of centroids to effect how the clustering is going  to happen. So, what would happen if we had a bad random initialization ?! There is a additional or a modification to K-means algorithm that allows you to correctly select the centroids and the solution is K-Means++ algorithm.  At the same time I want to mention that we’ll not actually going into k-means++ algorithm, it is quietly involves approach in how the selection occurs, but the good news is that all this happens in background ( you don’t need to actually implement ) so, its good idea to be aware this issue. Keep in mind! 
+   What if we select the centroid in different location, are we able to change the results ?! We don’t want the selection of centroids to effect how the clustering is going  to happen. So, what would happen if we had a bad random initialization ?! There is a additional or a modification to K-means algorithm that allows you to correctly select the centroids and the solution is K-Means++ algorithm.  At the same time I want to mention that we’ll not actually going into k-means++ algorithm, it quietly involves approach in how the selection occurs, but the good news is that all this happens in background ( you don’t need to actually implement ) so, its a good idea to be aware of this issue. Keep in mind! 
 
 ## Choosing the right number of clusters
 	
