@@ -5,7 +5,7 @@
 Solve Business problem in Python and R
 ---
 	
-   There is a big mall in a specific city that contains information of its clients that subscribed to the membership card. When the customers subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values between 1 and 100 so that the close to 1 spending score less the client spent, and close to 100 spending score more the client spent, score based to some criteria: income, the amount of dollars spent, number of times per week shown in mall etc.).
+   There is a big mall in a specific city that contains information of its clients that subscribed to the membership card. When the customers subscribed to the membership card, they provided info like their gender, age, annual income, spending score ( values between 1 and 100 so that the close to 1 spending score less the client spent, and close to 100 spending score more the client spent, score based on some criteria: income, the amount of dollars spent in mall, number of visits per week etc.).
 	
   **My job is to segment the clients into groups based to annual income and spending score** ( 2 variables for simplicity ). The mall doesn’t know – which are the segments and how many segments are, this is typically clustering problem because we don’t know the answers.
 
